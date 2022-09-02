@@ -13,13 +13,37 @@ const app = createApp(App)
 
 const store = createStore({
   state() {
-
+    return {
+      todos: [
+        { id: 'first-element', name: 'My First To Do Item', completed: false, location: 'home' }
+      ]
+    }
   },
   getters: {
+    todos(state) {
+      return state.todos;
+    }
 
   },
   mutations: {
+    updateTodo(state, todoItem) {
 
+      let id = todoItem.id;
+      let completed = todoItem.completed;
+      let name = todoItem.name;
+
+      let findEl = state.todos.find((x) => x.id == id);
+      if (findEl !== null) {
+        if (completed !== undefined) {
+          findEl.completed = completed;
+        }
+        if (name !== undefined) {
+          findEl.name = name;
+        }
+      } else {
+        console.log(`To Do List ${id} couldn't be found`)
+      }
+    }
   }
 })
 
