@@ -42,3 +42,13 @@
     }
 
   </script>
+
+<style scoped>
+  .list-item-holder{
+    display: flex;
+  }
+
+  [data-status='true'] label {
+    test-decoration: line-through;
+  }
+</style>
